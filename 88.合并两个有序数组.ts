@@ -26,21 +26,27 @@
 }; */
 
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m - n; j++) {
-      if (nums1[j] < nums2[i]) {
-        for (let k = m - 1; k > i; k--) {
-          nums1[k] = nums1[k - 1];
-        }
-        nums1[i] = nums2[j];
-      }
+  let p1 = m - 1;
+  let p2 = n - 1;
+  let tail = n + m - 1;
+  let current = 0;
+  while (p1 >= 0 || p2 >= 0) {
+    if (p1 == -1) {
+      current = nums2[p2--];
+    } else if (p2 == -1) {
+      current = nums1[p1--];
+    } else if (nums1[p1] > nums2[p2]) {
+      current = nums1[p1--];
+    } else {
+      current = nums2[p2--];
     }
+    nums1[tail--] = current;
   }
 }
 
-let a = [1, 4, 3, 0, 0, 0],
+let a = [1, 3, 4, 0, 0, 0],
   b = [2, 5, 6];
-merge(a, 6, b, 3);
+merge(a, 3, b, 3);
 console.log(a);
 
 // @lc code=end
