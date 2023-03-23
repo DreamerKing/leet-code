@@ -9,7 +9,7 @@
  * @param {number} target
  * @return {number[]}
  */
-const twoSum = function (nums, target) {
+/* const twoSum = function (nums, target) {
 	let len = nums.length;
 	for (let i = 0; i < len; i++) {
 		for (let j = i + 1; j < len; j++) {
@@ -17,6 +17,14 @@ const twoSum = function (nums, target) {
 				return [i, j];
 			}
 		}
+	}
+}; */
+
+const twoSum = function (nums, target) {
+	let len = nums.length;
+	for (let i = 0; i < len; i++) {
+		const index = nums.indexOf(target - nums[i], i + 1);
+		if (index > -1) return [i, index];
 	}
 };
 
