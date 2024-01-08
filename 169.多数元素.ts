@@ -15,10 +15,11 @@ function majorityElement(nums: number[]): number {
       m.set(n, 1);
     }
   }
-  const result = Array.from(m.entries()).filter(([key, value]) => {
-    return value >= half;
+
+  const result = Array.from(m.entries()).sort((a, b) => {
+    return b[1] - a[1];
   });
-  return result[0]?.[1];
+  return result[0]?.[0];
 }
 
 console.log(majorityElement([3, 3, 3, 3, 2, 2, 1, 1]));

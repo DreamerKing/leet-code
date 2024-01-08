@@ -3,8 +3,7 @@
     // 悬停以查看现有属性的描述。
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
-        
+    "configurations": [ 
         {
             "type": "node",
             "request": "launch",
@@ -13,6 +12,26 @@
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
-        }
-    ]
+        }, {
+            "request": "launch",
+            "name": "Launch Program",
+            "type": "node",
+            "program": "${workspaceFolder}/2.两数相加.ts",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "/Users/dreamerking/.deno/bin/deno",
+            "runtimeArgs": [
+              "run",
+              "--inspect-wait",
+              "--allow-all"
+            ],
+            "attachSimplePort": 9229
+          }
+    ],
+    "tasks": [{
+        "type": "deno",
+        "command": "run",
+        "args": ["2.两数相加.ts"],
+        "problemMatcher": ["$deno"],
+        "label": "deno: run"
+    }]
 }

@@ -10,22 +10,22 @@ class OrderedStream {
   private stream: string[] = [];
   protected size: number;
   constructor(n: number) {
-    this.stream = Array(n + 1).fill("");
+    this.stream = Array(n).fill("");
     this.size = n;
   }
 
   insert(idKey: number, value: string): string[] {
-    this.stream[idKey] = value;
+    this.stream[idKey - 1] = value;
     const result: string[] = [];
-    for (let current = idKey; current <= this.size; current++) {
-      let cur = this.stream[current];
-      if (cur) {
-        result.push(cur);
-      } else {
-        break;
+    if (this.ptr === idKey) {
+      for (let current = idKey - 1; current < this.size; current++) {
+        let cur = this.stream[current];
+        if (!!cur) {
+          result.push(cur);
+        } else {
+          break;
+        }
       }
-    }
-    if (result.length > 0) {
       this.ptr++;
     }
     return result;
