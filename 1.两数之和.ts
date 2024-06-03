@@ -9,6 +9,20 @@
  * @param {number} target
  * @return {number[]}
  */
+const twoSum = function (nums, target) {
+	let len = nums.length;
+	let map = new Map();
+	for (let i = 0; i < len; i++) {
+		if (!map.has(nums[i])) {
+			map.set(nums[i], i)
+		}
+		let b = target - nums[i];
+		if (map.has(b)) {
+			return [i, map.get(b)];
+		}
+	}
+};
+
 /* const twoSum = function (nums, target) {
 	let len = nums.length;
 	for (let i = 0; i < len; i++) {
@@ -20,13 +34,15 @@
 	}
 }; */
 
-const twoSum = function (nums, target) {
+/* const twoSum = function (nums, target) {
 	let len = nums.length;
 	for (let i = 0; i < len; i++) {
 		const index = nums.indexOf(target - nums[i], i + 1);
 		if (index > -1) return [i, index];
 	}
-};
+}; */
+
+
 
 let result = twoSum([2, 7, 11, 15], 26);
 console.log(result);

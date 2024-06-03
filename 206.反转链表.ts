@@ -17,23 +17,25 @@
  * }
  */
 
+
 function reverseList(head: ListNode | null): ListNode | null {
+  if (!head || !head?.next) return head;
+
   let current = head;
-  let stack: ListNode = [];
-  let preNode = null;
+  let stack: ListNode[] = [];
   while (current) {
     stack.push(current);
-    preNode = current;
     current = current.next;
   }
 
-  const newHead = stack.pop();
-  preNode = newHead;
+  const newHead = stack.pop()!;
+  let  prev = newHead;
   while (stack.length) {
-    current = stack.pop();
-    preNode.next = current;
-    preNode = current
+    current = stack.pop()!;
+    prev.next = current;
+    prev = current
   }
+  current.next = null;
   return newHead;
 };
 // @lc code=end

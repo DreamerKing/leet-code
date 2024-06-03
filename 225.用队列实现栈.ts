@@ -6,24 +6,30 @@
 
 // @lc code=start
 class MyStack {
+    #size = 0
+    #data: number[] = []
     constructor() {
 
     }
 
     push(x: number): void {
-
+        this.#data.push(x);
+        this.#size++;
     }
 
     pop(): number {
-
+        if (this.#size>=0) {
+            this.#size--;
+        }
+        return this.#data.pop() as number;
     }
 
     top(): number {
-
+       return this.#data[this.#size-1]
     }
 
     empty(): boolean {
-
+        return this.#size == 0
     }
 }
 
